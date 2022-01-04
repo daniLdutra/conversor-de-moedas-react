@@ -1,5 +1,5 @@
 import './conversor-moedas.css';
-import { Form, Col, Row, Container, Spinner, Button } from 'react-bootstrap';
+import { Form, Col, Row, Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -22,7 +22,11 @@ function ConversorMoedas() {
             <Col sm="3">
               <Form.Control as="select"></Form.Control>
             </Col>
-            <Col sm="2"></Col>
+            <Col sm="2">
+              <Button variant="sucess" type="submit">
+                Converter
+              </Button>
+            </Col>
           </Row>
         </Form>
       </Container>
