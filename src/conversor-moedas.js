@@ -12,6 +12,7 @@ import {
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+import ListarMoedas from './listar-moedas';
 
 function ConversorMoedas() {
   return (
@@ -27,13 +28,17 @@ function ConversorMoedas() {
               <Form.Control placeholder="0" value={1} required />
             </Col>
             <Col sm="3">
-              <Form.Control as="select"></Form.Control>
+              <Form.Control as="select">
+                <ListarMoedas />
+              </Form.Control>
             </Col>
             <Col sm="1" className="text-center" style={{ paddingTop: '5px' }}>
               <FontAwesomeIcon icon={faAngleDoubleRight}></FontAwesomeIcon>
             </Col>
             <Col sm="3">
-              <Form.Control as="select"></Form.Control>
+              <Form.Control as="select">
+                <ListarMoedas />
+              </Form.Control>
             </Col>
             <Col sm="2">
               <Button variant="success" type="submit">
