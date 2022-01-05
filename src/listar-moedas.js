@@ -43,7 +43,11 @@ function ListarMoedas() {
     }
     return 0;
   }
-  return MOEDAS.sort(compare);
+  return MOEDAS.sort(compare).map((moeda) => (
+    <option value={moeda.sigla} key={moeda.sigla}>
+      {moeda.descricao}
+    </option>
+  ));
 }
 
 export default ListarMoedas;
