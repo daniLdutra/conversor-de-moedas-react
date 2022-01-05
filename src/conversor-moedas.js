@@ -43,7 +43,7 @@ function ConversorMoedas() {
             </Col>
           </Row>
         </Form>
-        <Modal show={true}>
+        <Modal show={false}>
           <Modal.Header type="button" class="close" aria-label="Close">
             <Modal.Title>Conversão</Modal.Title>
             <span aria-hidden="true">X</span>
