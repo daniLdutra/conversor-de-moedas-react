@@ -1,11 +1,18 @@
 import './conversor-moedas.css';
 import { Form, Col, Button, Row, Spinner, Alert, Modal } from 'react-bootstrap';
+import { useState } from 'react';
 import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import ListarMoedas from './listar-moedas';
 
 function ConversorMoedas() {
+  const [valor, setValor] = useState('1');
+
+  function handleValor({ target }) {
+    setValor(target.value);
+  }
+
   return (
     <div>
       <h1>Conversor de Moedas</h1>
@@ -16,7 +23,12 @@ function ConversorMoedas() {
         <Form>
           <Row>
             <Col sm="3">
-              <Form.Control placeholder="0" value={1} required />
+              <Form.Control
+                placeholder="0"
+                value={valor}
+                onChange={handleValor}
+                required
+              />
             </Col>
             <Col sm="3">
               <Form.Control as="select">
