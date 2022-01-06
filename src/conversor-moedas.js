@@ -17,6 +17,7 @@ function ConversorMoedas() {
   const [exibirSpinner, setExibirSpinner] = useState(false);
   const [formValidado, setFormValidado] = useState(false);
   const [exibirModal, setExibirModal] = useState(false);
+  const [resultadoConversao, setResultadoConversao] = useState('');
 
   function handleValor({ target }) {
     setValor(target.value.replace(/\D/g, ''));
@@ -45,6 +46,9 @@ function ConversorMoedas() {
       setExibirSpinner(true);
       axios.get(FIXER_URL).then((res) => {
         const cotacao = obterCotacao(res.data);
+        setResultadoConversao(`${valor} ${moedaDe} = ${cotacao} ${moedaPara}`);
+        setExibirModal(true);
+        setExibirSpinner(false);
       });
     }
   }
@@ -114,9 +118,8 @@ function ConversorMoedas() {
           </Row>
         </Form>
         <Modal show={exibirModal} onHide={handleFecharModal}>
-          {console.log(handleFecharModal)}
           <Modal.Header>
-            <Modal.Title onHide={handleFecharModal}>Conversão</Modal.Title>
+            <Modal.Title>Conversão</Modal.Title>
             <button
               type="button"
               className="close"
@@ -126,7 +129,7 @@ function ConversorMoedas() {
               <span aria-hidden="true">&times;</span>
             </button>
           </Modal.Header>
-          <Modal.Body>resultado conversao</Modal.Body>
+          <Modal.Body>{resultadoConversao}</Modal.Body>
           <Modal.Footer>
             <Button variant="success" onClick={handleFecharModal}>
               Nova conversão
