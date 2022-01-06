@@ -11,6 +11,7 @@ function ConversorMoedas() {
   const [moedaDe, setMoedaDe] = useState('BRL');
   const [moedaPara, setMoedaPara] = useState('USD');
   const [exibirSpinner, setExibirSpinner] = useState(false);
+  const [formValidado, setFormValidado] = useState(false);
 
   function handleValor({ target }) {
     setValor(target.value.replace(/\D/g, ''));
@@ -24,6 +25,14 @@ function ConversorMoedas() {
     setMoedaPara(target.value);
   }
 
+  function converter(event) {
+    event.preventDefault();
+    setFormValidado(true);
+    if (event.currentTarget.checkValidity() === true) {
+      //Imprementar chamada ao Fixed.io
+    }
+  }
+
   return (
     <div>
       <h1>Conversor de Moedas</h1>
@@ -31,7 +40,7 @@ function ConversorMoedas() {
         <Alert variant="danger" show={true}>
           Erro ao obter dados de conversão, tente novamente!
         </Alert>
-        <Form>
+        <Form onSubmit={converter} noValidate validated={formValidado}>
           <Row>
             <Col sm="3">
               <Form.Control
