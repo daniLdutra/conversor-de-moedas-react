@@ -26,11 +26,20 @@ function ConversorMoedas() {
     setMoedaPara(target.value);
   }
 
+  function handleFecharModal(event) {
+    setValor('1');
+    setMoedaDe('BRL');
+    setMoedaPara('USD');
+    setFormValidado(false);
+    setExibirModal(false);
+  }
+
   function converter(event) {
     event.preventDefault();
     setFormValidado(true);
     if (event.currentTarget.checkValidity() === true) {
       //Imprementar chamada ao Fixed.io
+      setExibirModal(true);
     }
   }
 
@@ -85,11 +94,19 @@ function ConversorMoedas() {
           </Row>
         </Form>
         <Modal show={exibirModal} onHide={handleFecharModal}>
-          <Modal.Header type="button" class="close" aria-label="Close">
-            <Modal.Title>Conversão</Modal.Title>
-            <span aria-hidden="true">X</span>
+          {console.log(handleFecharModal)}
+          <Modal.Header>
+            <Modal.Title onHide={handleFecharModal}>Conversão</Modal.Title>
+            <button
+              type="button"
+              className="close"
+              aria-label="Close"
+              onClick={handleFecharModal}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </Modal.Header>
-          <Modal.Body>{resultadoConversao}</Modal.Body>
+          <Modal.Body>resultado conversao</Modal.Body>
           <Modal.Footer>
             <Button variant="success" onClick={handleFecharModal}>
               Nova conversão
