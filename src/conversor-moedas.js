@@ -49,6 +49,20 @@ function ConversorMoedas() {
     }
   }
 
+  function obterCotacao(dadosCotacao) {
+    if (!dadosCotacao || dadosCotacao.success !== true) {
+      return false;
+    }
+    const cotacaoDe = dadosCotacao.rates[moedaDe];
+    //moedaDe é a informação que temos do nosso select
+    //dadosCotacao.rates vem do objeto de rates disponibilizado pela api
+    const cotacaoPara = dadosCotacao.rates[moedaPara];
+    const cotacao = (1 / cotacaoDe) * cotacaoPara * valor;
+    //formula que está em (), permite obter a cotação que queremos para conversão proporcional com base no euro, valor refere-se ao que é inserido no campo de texto.
+    return cotacao.toFixed(2);
+    // retorna os dados arrendodados em 2 casas decimais
+  }
+
   return (
     <div>
       <h1>Conversor de Moedas</h1>
