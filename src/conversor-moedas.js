@@ -5,8 +5,12 @@ import './index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import ListarMoedas from './listar-moedas';
+import axios from 'axios';
 
 function ConversorMoedas() {
+  const FIXER_URL =
+    'http://data.fixer.io/api/latest?access_key=eba7130a5b2d720ce43eb5fcddd47cc3';
+
   const [valor, setValor] = useState('1');
   const [moedaDe, setMoedaDe] = useState('BRL');
   const [moedaPara, setMoedaPara] = useState('USD');
@@ -38,8 +42,10 @@ function ConversorMoedas() {
     event.preventDefault();
     setFormValidado(true);
     if (event.currentTarget.checkValidity() === true) {
-      //Imprementar chamada ao Fixed.io
-      setExibirModal(true);
+      setExibirSpinner(true);
+      axios.get(FIXER_URL).then((res) => {
+        const cotacao = obterCotacao(res.data);
+      });
     }
   }
 
