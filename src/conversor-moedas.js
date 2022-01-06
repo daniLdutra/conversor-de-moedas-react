@@ -12,6 +12,7 @@ function ConversorMoedas() {
   const [moedaPara, setMoedaPara] = useState('USD');
   const [exibirSpinner, setExibirSpinner] = useState(false);
   const [formValidado, setFormValidado] = useState(false);
+  const [exibirModal, setExibirModal] = useState(false);
 
   function handleValor({ target }) {
     setValor(target.value.replace(/\D/g, ''));
@@ -83,14 +84,16 @@ function ConversorMoedas() {
             </Col>
           </Row>
         </Form>
-        <Modal show={false}>
+        <Modal show={exibirModal} onHide={handleFecharModal}>
           <Modal.Header type="button" class="close" aria-label="Close">
             <Modal.Title>Conversão</Modal.Title>
             <span aria-hidden="true">X</span>
           </Modal.Header>
-          <Modal.Body>Resultado da conversão aqui...</Modal.Body>
+          <Modal.Body>{resultadoConversao}</Modal.Body>
           <Modal.Footer>
-            <Button variant="success">Nova conversão</Button>
+            <Button variant="success" onClick={handleFecharModal}>
+              Nova conversão
+            </Button>
           </Modal.Footer>
         </Modal>
       </div>
