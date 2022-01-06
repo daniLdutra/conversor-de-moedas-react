@@ -10,6 +10,7 @@ function ConversorMoedas() {
   const [valor, setValor] = useState('1');
   const [moedaDe, setMoedaDe] = useState('BRL');
   const [moedaPara, setMoedaPara] = useState('USD');
+  const [exibirSpinner, setExibirSpinner] = useState(false);
 
   function handleValor({ target }) {
     setValor(target.value.replace(/\D/g, ''));
@@ -63,8 +64,12 @@ function ConversorMoedas() {
             </Col>
             <Col sm="2">
               <Button variant="success" type="submit">
-                <Spinner animation="border" size="sm" />
-                Converter
+                <span className={exibirSpinner ? null : 'hidden'}>
+                  <Spinner animation="border" size="sm" />
+                </span>
+                <span className={exibirSpinner ? 'hidden' : null}>
+                  Converter
+                </span>
               </Button>
             </Col>
           </Row>
