@@ -42,6 +42,7 @@ function ConversorMoedas() {
 
   function converter(event) {
     event.preventDefault();
+    if (parseFloat(valor) < 0) return;
     setFormValidado(true);
     if (event.currentTarget.checkValidity() === true) {
       setExibirSpinner(true);
