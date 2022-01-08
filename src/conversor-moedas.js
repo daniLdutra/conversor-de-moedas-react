@@ -42,10 +42,12 @@ function ConversorMoedas() {
 
   function converter(event) {
     event.preventDefault();
-    if (parseFloat(valor) < 0) return;
     setFormValidado(true);
     if (event.currentTarget.checkValidity() === true) {
       setExibirSpinner(true);
+      {
+        /*if: verifica se o formulario está validado para realizar conversão */
+      }
       axios
         .get(FIXER_URL)
         .then((res) => {
@@ -91,6 +93,7 @@ function ConversorMoedas() {
           Erro ao obter dados de conversão, tente novamente!
         </Alert>
         <Form onSubmit={converter} noValidate validated={formValidado}>
+          {/* validação visual através do bootstrap */}
           <Row>
             <Col sm="3">
               <Form.Control
