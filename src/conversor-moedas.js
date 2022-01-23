@@ -87,7 +87,7 @@ function ConversorMoedas() {
 
   return (
     <div>
-      <h1>Conversor de Moedas</h1>
+      <h1 className="text-center">Conversor de Moedas</h1>
       <div className="jumbotron">
         <Alert variant="danger" show={exibirMsgErro}>
           Erro ao obter dados de conversão, tente novamente!
