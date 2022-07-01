@@ -45,9 +45,7 @@ function ConversorMoedas() {
     setFormValidado(true);
     if (event.currentTarget.checkValidity() === true) {
       setExibirSpinner(true);
-      {
-        /*if: verifica se o formulario está validado para realizar conversão */
-      }
+     
       axios
         .get(FIXER_URL)
         .then((res) => {
